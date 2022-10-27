@@ -21,7 +21,7 @@ const Infocourse = () => {
             <Container>
                 <Row>
                
-                    <Col lg="4">
+                    <Col lg="4" className='mt-5'>
                     {
                         courses.map(course=><p><Link to={`/info/${course.id}`}>{course.name}</Link></p>)
                     }

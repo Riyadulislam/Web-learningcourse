@@ -15,14 +15,14 @@ const Detailspage = () => {
         <div>
           
          <div className='mb-4 mt-5'>
-    <Card className="text-center"   style={{height:'500px',width:'300px'}}>
+      <Card className="text-center"   >
         <div className='d-flex justify-content-between'>
         <Card.Header>{name}</Card.Header>
         <FaDev    style={{height:'40px',width:'40px'}}></FaDev>
         </div>
      
       <Image className='me-4' src={img} 
-        style={{height:'200px',width:'300px'}}
+       
         ></Image>
       <Card.Body>
         <Card.Title>{title}</Card.Title> 
@@ -31,7 +31,7 @@ const Detailspage = () => {
             <p>badge:{rating.badge}</p>
         </div>
         <p> Date:{uploadDate}</p>
-        <Link to='/info'><Button variant="primary">Get course</Button></Link>
+        <Link to={`/primium/${id}`}>{name}</Link>
       </Card.Body>
       
     </Card>  

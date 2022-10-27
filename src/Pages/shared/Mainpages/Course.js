@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image'
@@ -7,8 +8,8 @@ import { Link } from 'react-router-dom';
 const Course = ({course}) => {
     const {name,title,img,id,uploadDate}=course;
     return (
-      
-         <div className='mb-4 mt-5'>
+        <Row>
+         <Col className='mb-4 mt-5'>
              <Card className="text-center"   style={{height:'500px',width:'300px'}}>
       <Card.Header>{name}</Card.Header>
       <Image className='me-4' src={img} 
@@ -24,7 +25,8 @@ const Course = ({course}) => {
       </Card.Body>
       <Card.Footer className="text-muted"> date:{uploadDate}</Card.Footer>
     </Card>  
-        </div>
+        </Col>
+        </Row>
     );
 };
 

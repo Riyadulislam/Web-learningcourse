@@ -12,14 +12,17 @@ import { useState } from 'react';
     const auth=getAuth(app);
 const Authprovider = ({children}) => {
     const [user,setUser]=useState(null) 
+    const [loading,setLoading]=useState(true)
     const createUser=(email,password)=>{
         return createUserWithEmailAndPassword(auth, email, password)
         
     }
     const googleProviderLogin=(provider)=>{
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
     const singinlogin=(email,password)=>{
+        setLoading(true)
      
         return signInWithEmailAndPassword(auth,email,password)
       
@@ -39,7 +42,7 @@ const Authprovider = ({children}) => {
               
      },[])
 
-    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin}
+    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin,loading}
     return (
         <div>
             <authContext.Provider value={authInfo}>

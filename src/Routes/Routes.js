@@ -11,6 +11,8 @@ import Detailspage from "../Pages/shared/Mainpages/Detailspage";
 import Faq from "../Pages/shared/Mainpages/Faq";
 import Home from "../Pages/shared/Mainpages/Home";
 import Infocourse from "../Pages/shared/Mainpages/Infocourse";
+import Primium from "../Pages/shared/Mainpages/Primium";
+import PrivateRoute from "./PrivateRoute";
 
 
  export const router =createBrowserRouter([
@@ -19,7 +21,7 @@ import Infocourse from "../Pages/shared/Mainpages/Infocourse";
     element:<Main></Main>,
     children:[
         {
-            path:'/home',
+            path:'/',
             element:<Home></Home>
         },
         {
@@ -59,7 +61,14 @@ import Infocourse from "../Pages/shared/Mainpages/Infocourse";
             element:<Detailspage></Detailspage>,
             loader:({params})=>fetch(`http://localhost:7000/course/${params.id}`)
             
+        },
+        {
+            path:'/primium/:id',
+            element:<PrivateRoute><Primium></Primium></PrivateRoute>,
+            loader:({params})=>fetch(`http://localhost:7000/course/${params.id}`)
+        
         }
+     
     ]
 }
 ])
