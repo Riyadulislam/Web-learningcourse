@@ -7,20 +7,23 @@ import { authContext } from '../Context/Authprovider/Authprovider';
 
 const Register = () => {
     const [error,setError]=useState(' ')
-  const {createUser}=useContext(authContext)
+  const {createUser,updateuser}=useContext(authContext)
 
     const handleRegister=(event)=>{
         event.preventDefault();
         const form=event.target;
+        const name=form.name.value;
+        const photoURL=form.photourl.value;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(email,password)
+        console.log(email,password,name,photoURL)
         createUser(email,password)
         .then(result=>{
             const user=result.user;
-            console.log(user)
+            console.log(user) 
             setError(' ')
             form.reset();
+            updateuser(name,photoURL);
         })
         .catch(error=>{
             console.log(error)
@@ -33,6 +36,11 @@ const Register = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control name="name" type="text" placeholder="Enter your name" />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Photo Url</Form.Label>
+          <Form.Control name="photourl" type="text" placeholder="Enter your photo url" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">

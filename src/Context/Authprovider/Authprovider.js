@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -31,6 +31,11 @@ const Authprovider = ({children}) => {
         
         return signOut(auth);
     }
+    const updateuser=( displayName, photoURL)=>{
+        return updateProfile(auth.currentUser,{
+            displayName, photoURL
+        })
+    }
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(currentuser) =>{
               console.log('inside state',currentuser)
@@ -42,7 +47,7 @@ const Authprovider = ({children}) => {
               
      },[])
 
-    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin,loading}
+    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin,loading,updateuser}
     return (
         <div>
             <authContext.Provider value={authInfo}>

@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +8,8 @@ import { authContext } from '../Context/Authprovider/Authprovider';
 
 
 const Login = () => {
+    const [error,setError]=useState('')
+    
     const {googleProviderLogin, singinlogin}=useContext(authContext)
    
 
@@ -26,11 +29,14 @@ const Login = () => {
         singinlogin(email,password)
         .then(result=>{
             const user=result.user;
-            console.log(user)
+          
+            setError(' ')
+            form.reset();
            navigate(from, { replace: true })
         })
         .catch(error=>{
             console.error(error)
+            setError(error.message)
         })
        
 
@@ -63,6 +69,7 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
+        <p className='text-primary'>{error}</p>
         <br></br>
         
         
