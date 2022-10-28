@@ -41,7 +41,10 @@ const Detailspage = () => {
             <p>badge:{rating.badge}</p>
         </div>
         <p> Date:{uploadDate}</p>
-        <Link to={`/primium/${id}`}>premium course</Link>
+    <Link className='' to={`/primium/${id}`}><Button variant="primary">premium course</Button></Link>
+    
+   
+        
       </Card.Body>
       
     </Card>  

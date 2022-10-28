@@ -4,12 +4,13 @@ import { useLoaderData } from 'react-router-dom';
 
 const Primium = () => {
     const course=useLoaderData()
-    const {name,title,img,rating,id,uploadDate}=course
+    const {name,title,img,rating,id,uploadDate,question}=course
 
     return (
-        <div>
-         <h1 className='text-primary'>{name}</h1>
-         <p>{title}</p>
+        <div className='border border-primary mt-5 w-50 mx-auto p-5 ' style={{backgroundColor:'cadetblue',color:'white'}}>
+         <p> Course Name: {name}</p>
+         <p> Question: {question}</p>
+         <p> Title: {title}</p>
         </div>
     );
 };
