@@ -9,7 +9,7 @@ const Leftnav = () => {
     console.log(courses)
     
     useEffect(()=>{
-        fetch('http://localhost:7000/course')
+        fetch('https://web-dev-learning-course-server.vercel.app/course')
         .then(res=>res.json())
         .then(data=>setCourses(data))
 

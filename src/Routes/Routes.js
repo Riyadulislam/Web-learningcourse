@@ -19,6 +19,7 @@ import PrivateRoute from "./PrivateRoute";
 {
     path:'/',
     element:<Main></Main>,
+     errorElement:<div>not found</div>,
     children:[
         {
             path:'/',
@@ -59,13 +60,13 @@ import PrivateRoute from "./PrivateRoute";
         {
             path:'/info/:id',
             element:<Detailspage></Detailspage>,
-            loader:({params})=>fetch(`http://localhost:7000/course/${params.id}`)
+            loader:({params})=>fetch(`https://web-dev-learning-course-server.vercel.app/course/${params.id}`)
             
         },
         {
             path:'/primium/:id',
             element:<PrivateRoute><Primium></Primium></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:7000/course/${params.id}`)
+            loader:({params})=>fetch(`https://web-dev-learning-course-server.vercel.app/course/${params.id}`)
         
         }
      

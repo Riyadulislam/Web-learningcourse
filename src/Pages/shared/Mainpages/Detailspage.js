@@ -12,13 +12,13 @@ import { createRef } from 'react';
 const Detailspage = () => {
     const course=useLoaderData()
     const ref=createRef();
-    const {name,title,img,rating,id,uploadDate}=course
+    const {name,title,img,rating,id,uploadDate,description}=course
     console.log( 'value',course)
     return (
         <div>
           
          <div className='mb-4 mt-5'>
-      <Card className="text-center" ref={ref}>
+      <Card className="text-center mx-auto h-50 w-75" ref={ref} >
       <ReactToPdf targetRef={ref} filename='course.pdf'>
     {({toPdf}) =>  (
         <Button  onClick={toPdf}>Download</Button>
@@ -30,11 +30,12 @@ const Detailspage = () => {
         <FaDev    style={{height:'40px',width:'40px'}}></FaDev>
         </div>
      
-      <Image className='me-4' src={img} 
+      <Image className='me-4 fluid' src={img} 
        
         ></Image>
       <Card.Body>
         <Card.Title>{title}</Card.Title> 
+        <div> {description}</div>
         <div className='d-flex justify-content-between '>
             <p>number: {rating.number}</p>
             <p>badge:{rating.badge}</p>

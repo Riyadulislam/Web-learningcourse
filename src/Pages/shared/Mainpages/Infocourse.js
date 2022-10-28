@@ -10,7 +10,7 @@ const Infocourse = () => {
     
   
     useEffect(()=>{
-        fetch('http://localhost:7000/course')
+        fetch('https://web-dev-learning-course-server.vercel.app/course')
         .then(res=>res.json())
         .then(data=>setCourses(data))
 
@@ -19,7 +19,7 @@ const Infocourse = () => {
         <div>
             
             <Container>
-                <Row>
+                <Row  className=''>
                
                     <Col lg="4" className='mt-5 h-100 '  style={{backgroundColor:'cadetblue'}}>
                     {
@@ -28,7 +28,7 @@ const Infocourse = () => {
                         
                     }
                     </Col>
-                    <Col lg="8" className=''>
+                    <Col lg="8" className='row'>
                         
                         {
                             courses.map(course=><Course key={course.id} course={course}></Course>)
@@ -43,6 +43,6 @@ const Infocourse = () => {
 
         </div>
     );
-};
+}; 
 
 export default Infocourse;

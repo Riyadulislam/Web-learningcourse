@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const Course = ({course}) => {
     const {name,title,img,id,uploadDate}=course;
     return (
-        <Row >
-         <Col className='mb-4 mt-5 '>
-             <Card className="text-center"   style={{height:'500px',width:'300px'}}>
+        <div className='col-12 col-lg-6'>
+         <div className='mb-4 mt-5 '>
+             <Card className="text-center"   style={{height:'400px',width:'300px'}}>
       <Card.Header className='headerc' style={{backgroundColor:'cadetblue',color:'white'}}>{name}</Card.Header>
       <Image className='me-4' src={img} 
         style={{height:'200px',width:'300px'}}
@@ -25,8 +25,8 @@ const Course = ({course}) => {
       </Card.Body>
       <Card.Footer className="headerc" style={{backgroundColor:'cadetblue',color:'white'}}> date:{uploadDate}</Card.Footer>
     </Card>  
-        </Col>
-        </Row>
+        </div>
+        </div>
     );
 };
 
