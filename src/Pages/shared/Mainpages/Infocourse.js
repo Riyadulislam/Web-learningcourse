@@ -21,15 +21,20 @@ const Infocourse = () => {
             <Container>
                 <Row>
                
-                    <Col lg="4" className='mt-5'>
+                    <Col lg="4" className='mt-5 h-100 '  style={{backgroundColor:'cadetblue'}}>
                     {
-                        courses.map(course=><p><Link to={`/info/${course.id}`}>{course.name}</Link></p>)
+                       
+                        courses.map(course=><p ><Link className='mx-auto p-4 headerc' style={{color:'white'}}  to={`/info/${course.id}`}>{course.name}</Link></p>)
+                        
                     }
                     </Col>
-                    <Col lg="8">
+                    <Col lg="8" className=''>
+                        
                         {
                             courses.map(course=><Course key={course.id} course={course}></Course>)
                         }
+                       
+                       
                        
                     </Col>
                     

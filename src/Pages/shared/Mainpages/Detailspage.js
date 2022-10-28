@@ -5,18 +5,27 @@ import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image'
 import { Link } from 'react-router-dom';
 import { FaDev } from 'react-icons/fa';
+import ReactToPdf from 'react-to-pdf'
+import { createRef } from 'react';
 
 
 const Detailspage = () => {
     const course=useLoaderData()
+    const ref=createRef();
     const {name,title,img,rating,id,uploadDate}=course
     console.log( 'value',course)
     return (
         <div>
           
          <div className='mb-4 mt-5'>
-      <Card className="text-center"   >
-        <div className='d-flex justify-content-between'>
+      <Card className="text-center" ref={ref}>
+      <ReactToPdf targetRef={ref} filename='course.pdf'>
+    {({toPdf}) =>  (
+        <Button  onClick={toPdf}>Download</Button>
+    )}
+    </ReactToPdf>
+
+        <div className='d-flex justify-content-between '>
         <Card.Header>{name}</Card.Header>
         <FaDev    style={{height:'40px',width:'40px'}}></FaDev>
         </div>

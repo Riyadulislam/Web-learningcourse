@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/Authprovider/Authprovider';
 import { FaEdgeLegacy } from 'react-icons/fa';
 import ReactTooltip from 'react-tooltip';
+import './Header.css'
 
 
 const Header = () => {
@@ -22,35 +23,39 @@ const Header = () => {
       }
     console.log(user)
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg"  className='header'>
       <Container>
-       <FaEdgeLegacy className='bg-danger me-4' style={{width:'30px'}}></FaEdgeLegacy>
-        <Navbar.Brand href="#home">Web Development Course</Navbar.Brand>
+       <FaEdgeLegacy className='headerc me-4' style={{width:'30px'}}></FaEdgeLegacy>
+        <Navbar.Brand href="#home" ><h4 className='headerc'>Web Development Course</h4></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link href="#features">
-            <Link to='/'>Home</Link>
+          <Nav.Link href="#features" >
+            <Link className='headerc'  to='/'>Home</Link>
+           
             </Nav.Link>
             <Nav.Link href="#features">
-            <Link to='/info'>Courses</Link>
+            <Link className='headerc' to='/info'>Courses</Link>
             </Nav.Link>
-            <Nav.Link href="#pricing"><Link to='/faq'>FAQ</Link></Nav.Link>
-            <Nav.Link href="#pricing">  <Link to='/blog'>Blog</Link></Nav.Link>
+            <Nav.Link href="#pricing"><Link className='headerc' to='/faq'>FAQ</Link></Nav.Link>
+            <Nav.Link href="#pricing">  <Link className='headerc' to='/blog'>Blog</Link></Nav.Link>
           
             
           </Nav>
+
           <Nav>
             {
                 user?.uid?
                 <>
+                <div className='d-flex align-items-center justify-content-between'>
                  <Image data-tip={user.displayName} style={{height:'50px'}} roundedCircle src={user?.photoURL} onClick={handle}></Image>
-                 <Button  onClick={handlesingout}>Logout</Button>
+                 <Link className='headerc'  onClick={handlesingout}>Logout</Link>
+                 </div>
                  <ReactTooltip place="top" type="dark" effect="float"/>
            
                 </>
                
-                : <Link className='me-2' to='/login'>Login</Link>
+                : <Link className='me-2 headerc' to='/login'>Login</Link>
 
             }
            

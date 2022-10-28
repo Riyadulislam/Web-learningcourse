@@ -1,9 +1,12 @@
 import React from 'react';
+import './Home.css'
 
 const Home = () => {
     return (
-        <div>
-            <h1 className='text-center text-primary mt-5'>Web Development Course</h1>
+        <div className='image mt-5'>
+         
+            
+           
         </div>
     );
 };

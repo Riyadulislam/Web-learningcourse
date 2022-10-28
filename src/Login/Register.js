@@ -32,7 +32,8 @@ const Register = () => {
 
     }
     return (
-        <Form className='mt-5 mx-auto' onSubmit={handleRegister} style={{ width: '300px' }}>
+        <Form className='mt-5 mx-auto header p-2' onSubmit={handleRegister} style={{ width: '300px' }}>
+             <h4 className='headerc text-center fw-bold'>Register</h4>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control name="name" type="text" placeholder="Enter your name" />
@@ -53,10 +54,10 @@ const Register = () => {
           <Form.Control name='password' type="password" placeholder="Password" />
         </Form.Group>
        
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
           Register
         </Button>
-         <h1>{error}</h1>
+         <p className='headerc'>{error}</p>
       </Form>
     );
 };

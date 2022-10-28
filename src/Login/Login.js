@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -7,13 +7,15 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../Context/Authprovider/Authprovider';
 
 
+
 const Login = () => {
     const [error,setError]=useState('')
     
-    const {googleProviderLogin, singinlogin}=useContext(authContext)
+    const {googleProviderLogin, singinlogin,githublogin}=useContext(authContext)
    
 
     const provider =new GoogleAuthProvider();
+    const githubprovider=new GithubAuthProvider();
     const location=useLocation();
     
     const from = location.state?.from?.pathname || '/';
@@ -52,29 +54,43 @@ const Login = () => {
             console.error(error)
         })
     }
+    const handleGithubLogin=()=>{
+        githublogin(githubprovider)
+        .then(result=>{
+            const user=result.user;
+            console.log(user)
+            navigate(from, { replace: true })
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+
+    }
     
     return (
-        <Form className='mt-5 mx-auto' onSubmit={handleLogin} style={{ width: '300px' }}>
+        <Form className='mt-5 mx-auto header p-2' onSubmit={handleLogin} style={{ width: '300px' }}>
+            <h4 className='text-center fw-bold headerc'>Please Login</h4>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email </Form.Label>
+          <Form.Label className='headerc'>Email </Form.Label>
           <Form.Control name='email' type="email" placeholder="Enter email" />
           
         </Form.Group>
   
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className='headerc'>Password</Form.Label>
           <Form.Control name='password' type="password" placeholder="Password" />
         </Form.Group>
         
-        <Button variant="primary" type="submit">
+        <Button className='mx-auto' variant="success" type="submit">
           Login
         </Button>
-        <p className='text-primary'>{error}</p>
-        <br></br>
+        <p className='headerc'>{error}</p>
+       
+        <Button variant="success" className='' onClick={handleGoogleLogin} >Login With Google</Button>
+
+        <Button variant="success" className='mt-2' onClick={handleGithubLogin} >Login With Github</Button>
         
-        
-        <Button variant="outline-primary" className='mt-5' onClick={handleGoogleLogin} >Login With Google</Button>
-        <p>if you are not register go to <Link to='/register'>Register</Link></p>
+        <p className=''>if you are not register go to <Link className=' text-white'  to='/register'>Register</Link></p>
    
       
       </Form>

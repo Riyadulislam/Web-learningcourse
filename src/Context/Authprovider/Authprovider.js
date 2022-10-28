@@ -31,6 +31,11 @@ const Authprovider = ({children}) => {
         
         return signOut(auth);
     }
+
+    const githublogin=( githubprovider)=>{
+        setLoading(true)
+        return signInWithPopup(auth, githubprovider)
+    }
     const updateuser=( displayName, photoURL)=>{
         return updateProfile(auth.currentUser,{
             displayName, photoURL
@@ -40,6 +45,7 @@ const Authprovider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth,(currentuser) =>{
               console.log('inside state',currentuser)
               setUser(currentuser)
+              setLoading(false)
              
           })
           return ()=> { unsubscribe();
@@ -47,7 +53,7 @@ const Authprovider = ({children}) => {
               
      },[])
 
-    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin,loading,updateuser}
+    const authInfo={user,createUser,googleProviderLogin,logout,singinlogin,loading,updateuser,githublogin}
     return (
         <div>
             <authContext.Provider value={authInfo}>
