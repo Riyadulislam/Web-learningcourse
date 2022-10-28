@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
+import Error from "../Pages/shared/Error";
 import Allcourse from "../Pages/shared/Mainpages/Allcourse";
 import Blog from "../Pages/shared/Mainpages/Blog";
 import Course from "../Pages/shared/Mainpages/Course";
@@ -19,7 +20,7 @@ import PrivateRoute from "./PrivateRoute";
 {
     path:'/',
     element:<Main></Main>,
-     errorElement:<div>not found</div>,
+     errorElement:<Error></Error>,
     children:[
         {
             path:'/',
