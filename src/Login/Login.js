@@ -72,13 +72,13 @@ const Login = () => {
             <h4 className='text-center fw-bold headerc'>Please Login</h4>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className='headerc'>Email </Form.Label>
-          <Form.Control name='email' type="email" placeholder="Enter email" />
+          <Form.Control name='email' type="email" placeholder="Enter email" required />
           
         </Form.Group>
   
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label className='headerc'>Password</Form.Label>
-          <Form.Control name='password' type="password" placeholder="Password" />
+          <Form.Control name='password' type="password" placeholder="Password"  required/>
         </Form.Group>
         
         <Button className='mx-auto' variant="success" type="submit">
