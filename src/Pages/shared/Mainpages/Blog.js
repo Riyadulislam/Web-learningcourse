@@ -10,7 +10,7 @@ const Blog = () => {
                 <Row>
                     <Col lg="6">
                         <h3 className='headerc'>What is Cors?</h3>
-                        <p>Cross-origin resource sharing ( CORS) is a mechanism that allows restricted 
+                        <p>Cross-origin resource sharin ( CORS) is a mechanism that allows restricted 
                             resources on a web page to be requested from another domain outside the domain
                              from which the first resource was served. [1] A web page may freely embed 
                              cross-origin images, stylesheets, scripts, iframes, and videos. [2] Certain
